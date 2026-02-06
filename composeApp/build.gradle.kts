@@ -89,7 +89,12 @@ compose.desktop {
         mainClass = "com.kapp.marslens.MainKt"
         // jvmArgs += listOf("-Djava.library.path=${project.projectDir}/libs")
         nativeDistributions {
-            targetFormats(org.jetbrains.compose.desktop.application.dsl.TargetFormat.Dmg, org.jetbrains.compose.desktop.application.dsl.TargetFormat.Pkg)
+            targetFormats(
+                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Dmg,
+                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Pkg,
+                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Msi,
+                org.jetbrains.compose.desktop.application.dsl.TargetFormat.Exe
+            )
             packageName = "MarsLens"
             packageVersion = "1.0.0"
         }
