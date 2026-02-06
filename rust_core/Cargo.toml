@@ -1,0 +1,24 @@
+[package]
+name = "xlog_core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+jni = "0.21"
+zstd = "0.13"
+flate2 = { version = "1.0", features = ["zlib"] }
+byteorder = "1.5"
+chrono = { version = "0.4", features = ["std"] }
+walkdir = "2"
+tea = "0.4"
+aes = "0.8"
+cbc = "0.1"
+hex = "0.4"
+anyhow = "1.0"
+thiserror = "1.0"
+log = "0.4"
+base64 = "0.21"
+# openssl = { version = "0.10", features = ["vendored"] } # Commented out for speed

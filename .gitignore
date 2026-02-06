@@ -1,0 +1,40 @@
+*.iml
+.gradle
+.agent
+.idea
+.vscode
+.trae
+.worktrees
+.DS_Store
+/local.properties
+/captures
+build/
+.externalNativeBuild
+.cxx
+.gradletasknamecache
+*/*.json
+
+# Rust
+rust_core/target/
+**/*.rs.bk
+
+# Binaries
+composeApp/libs/*.dylib
+composeApp/libs/*.dll
+composeApp/libs/*.so
+
+# OS
+Thumbs.db
+.DS_Store
+
+# iOS
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+iosApp/iosApp.xcodeproj/project.xcworkspace/xcuserdata
+iosApp/iosApp.xcodeproj/xcuserdata
+
+# KMP
+.kotlin
+rust_core/debug_decompressed.txt
