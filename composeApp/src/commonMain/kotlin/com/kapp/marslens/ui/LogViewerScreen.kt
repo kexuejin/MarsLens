@@ -72,6 +72,7 @@ fun LogViewerScreen() {
             
             LogList(
                 logs = mainState.filteredLogs,
+                isLoading = mainState.isLoading,
                 modifier = Modifier.weight(1f).fillMaxWidth(),
                 onOpenFile = { mainViewModel.pickFile() }
             )
@@ -315,13 +316,14 @@ fun RowScope.HeaderCell(text: String, width: androidx.compose.ui.unit.Dp? = null
 @Composable
 fun LogList(
     logs: List<com.kapp.marslens.data.model.LogEntry>, 
+    isLoading: Boolean,
     modifier: Modifier = Modifier,
     onOpenFile: () -> Unit
 ) {
     var expandedIndex by remember { mutableStateOf(-1) }
     
     Box(modifier = modifier.background(MaterialTheme.colorScheme.background)) {
-        if (logs.isEmpty()) {
+        if (logs.isEmpty() && !isLoading) {
             EmptyStateView(
                 modifier = Modifier.align(androidx.compose.ui.Alignment.Center),
                 onOpenFile = onOpenFile
@@ -339,6 +341,27 @@ fun LogList(
                             expandedIndex = if (expandedIndex == index) -1 else index
                         }
                     )
+                }
+            }
+        }
+        
+        if (isLoading) {
+            Surface(
+                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.7f),
+                shape = MaterialTheme.shapes.large,
+                modifier = Modifier.align(androidx.compose.ui.Alignment.Center)
+            ) {
+                Column(
+                    modifier = Modifier.padding(24.dp),
+                    horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
+                ) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(48.dp),
+                        color = MaterialTheme.colorScheme.primary,
+                        strokeWidth = 4.dp
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("Processing...", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 }
             }
         }
