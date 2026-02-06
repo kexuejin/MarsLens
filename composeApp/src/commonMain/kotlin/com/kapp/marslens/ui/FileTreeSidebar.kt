@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.koin.compose.viewmodel.koinViewModel
 import com.kapp.marslens.ui.MainViewModel
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 @Composable
 fun FileTreeSidebar(
@@ -164,8 +165,6 @@ fun KeyItem(
         }
     }
 }
-
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 
 @Composable
 fun FileTreeNodeItem(
