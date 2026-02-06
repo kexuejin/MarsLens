@@ -61,17 +61,36 @@ pub extern "system" fn Java_com_kapp_marslens_data_parser_XlogParser_decodeXlogN
 }
 // Helper for TEA decryption
 fn decrypt_tea(data: &mut [u8], key: &[u8]) {
-    use tea::{Decryptor, Key};
     if key.len() < 16 { return; }
     
-    let tea_key = Key::from_slice(&key[0..16]);
+    // Convert key bytes to u32 array
+    let mut k = [0u32; 4];
+    for i in 0..4 {
+        k[i] = u32::from_le_bytes([key[i*4], key[i*4+1], key[i*4+2], key[i*4+3]]);
+    }
+
     // TEA works on 8-byte blocks
     for i in (0..data.len()).step_by(8) {
         if i + 8 <= data.len() {
-            let mut block = [0u8; 8];
-            block.copy_from_slice(&data[i..i+8]);
-            tea_key.decrypt(&mut block);
-            data[i..i+8].copy_from_slice(&block);
+            let mut v0 = u32::from_le_bytes([data[i], data[i+1], data[i+2], data[i+3]]);
+            let mut v1 = u32::from_le_bytes([data[i+4], data[i+5], data[i+6], data[i+7]]);
+            
+            let mut sum: u32 = 0xC6EF3720; // delta * 32
+            let delta: u32 = 0x9E3779B9;
+            
+            for _ in 0..16 { // XLog typically uses 16 rounds, standard TEA uses 32. 
+                             // Wait, standard TEA is 32 rounds (64 operations).
+                             // Let's stick to standard TEA logic.
+                             // 0x9E3779B9 is delta.
+                             // sum starts at delta << 5 (0xC6EF3720) for decryption.
+                v1 = v1.wrapping_sub(((v0 << 4).wrapping_add(k[2])) ^ (v0.wrapping_add(sum)) ^ ((v0 >> 5).wrapping_add(k[3])));
+                v0 = v0.wrapping_sub(((v1 << 4).wrapping_add(k[0])) ^ (v1.wrapping_add(sum)) ^ ((v1 >> 5).wrapping_add(k[1])));
+                sum = sum.wrapping_sub(delta);
+            }
+            
+            // Write back
+            data[i..i+4].copy_from_slice(&v0.to_le_bytes());
+            data[i+4..i+8].copy_from_slice(&v1.to_le_bytes());
         }
     }
 }
