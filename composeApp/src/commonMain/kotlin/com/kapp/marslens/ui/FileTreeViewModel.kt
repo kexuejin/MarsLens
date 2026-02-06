@@ -1,6 +1,6 @@
-package com.kapp.xloggui.ui
+package com.kapp.marslens.ui
 
-import com.kapp.xloggui.domain.XlogDecoder
+import com.kapp.marslens.domain.XlogDecoder
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

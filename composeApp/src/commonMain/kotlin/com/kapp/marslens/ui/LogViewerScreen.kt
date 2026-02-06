@@ -1,4 +1,4 @@
-package com.kapp.xloggui.ui
+package com.kapp.marslens.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
-import com.kapp.xloggui.ui.theme.*
+import com.kapp.marslens.ui.theme.*
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
@@ -144,8 +144,8 @@ fun GlassyToolbar(
     onOpenFolder: () -> Unit,
     searchText: String,
     onSearchChange: (String) -> Unit,
-    currentFilter: com.kapp.xloggui.data.model.LogLevel,
-    onFilterChange: (com.kapp.xloggui.data.model.LogLevel) -> Unit,
+    currentFilter: com.kapp.marslens.data.model.LogLevel,
+    onFilterChange: (com.kapp.marslens.data.model.LogLevel) -> Unit,
     onSetKey: () -> Unit,
     onExport: () -> Unit
 ) {
@@ -207,12 +207,12 @@ fun GlassyToolbar(
                         text = "Level: ${currentFilter.name}", 
                         style = MaterialTheme.typography.bodySmall,
                         color = when(currentFilter) {
-                            com.kapp.xloggui.data.model.LogLevel.Verbose -> LevelVerbose
-                            com.kapp.xloggui.data.model.LogLevel.Debug -> LevelDebug
-                            com.kapp.xloggui.data.model.LogLevel.Info -> LevelInfo
-                            com.kapp.xloggui.data.model.LogLevel.Warning -> LevelWarn
-                            com.kapp.xloggui.data.model.LogLevel.Error -> LevelError
-                            com.kapp.xloggui.data.model.LogLevel.Fatal -> LevelFatal
+                            com.kapp.marslens.data.model.LogLevel.Verbose -> LevelVerbose
+                            com.kapp.marslens.data.model.LogLevel.Debug -> LevelDebug
+                            com.kapp.marslens.data.model.LogLevel.Info -> LevelInfo
+                            com.kapp.marslens.data.model.LogLevel.Warning -> LevelWarn
+                            com.kapp.marslens.data.model.LogLevel.Error -> LevelError
+                            com.kapp.marslens.data.model.LogLevel.Fatal -> LevelFatal
                             else -> MaterialTheme.colorScheme.onSurface
                         }
                     )
@@ -224,18 +224,18 @@ fun GlassyToolbar(
                     onDismissRequest = { showFilterMenu = false },
                     modifier = Modifier.background(MaterialTheme.colorScheme.surface)
                 ) {
-                    com.kapp.xloggui.data.model.LogLevel.entries.forEach { level ->
+                    com.kapp.marslens.data.model.LogLevel.entries.forEach { level ->
                         DropdownMenuItem(
                             text = { 
                                 Text(
                                     level.name, 
                                     color = when(level) {
-                                        com.kapp.xloggui.data.model.LogLevel.Verbose -> LevelVerbose
-                                        com.kapp.xloggui.data.model.LogLevel.Debug -> LevelDebug
-                                        com.kapp.xloggui.data.model.LogLevel.Info -> LevelInfo
-                                        com.kapp.xloggui.data.model.LogLevel.Warning -> LevelWarn
-                                        com.kapp.xloggui.data.model.LogLevel.Error -> LevelError
-                                        com.kapp.xloggui.data.model.LogLevel.Fatal -> LevelFatal
+                                        com.kapp.marslens.data.model.LogLevel.Verbose -> LevelVerbose
+                                        com.kapp.marslens.data.model.LogLevel.Debug -> LevelDebug
+                                        com.kapp.marslens.data.model.LogLevel.Info -> LevelInfo
+                                        com.kapp.marslens.data.model.LogLevel.Warning -> LevelWarn
+                                        com.kapp.marslens.data.model.LogLevel.Error -> LevelError
+                                        com.kapp.marslens.data.model.LogLevel.Fatal -> LevelFatal
                                         else -> MaterialTheme.colorScheme.onSurface
                                     }
                                 ) 
@@ -314,7 +314,7 @@ fun RowScope.HeaderCell(text: String, width: androidx.compose.ui.unit.Dp? = null
 
 @Composable
 fun LogList(
-    logs: List<com.kapp.xloggui.data.model.LogEntry>, 
+    logs: List<com.kapp.marslens.data.model.LogEntry>, 
     modifier: Modifier = Modifier,
     onOpenFile: () -> Unit
 ) {
@@ -347,21 +347,21 @@ fun LogList(
 
 @Composable
 fun LogItemRow(
-    item: com.kapp.xloggui.data.model.LogEntry,
+    item: com.kapp.marslens.data.model.LogEntry,
     isExpanded: Boolean,
     onToggleExpand: () -> Unit
 ) {
     val levelColor = when(item.level) {
-        com.kapp.xloggui.data.model.LogLevel.Verbose -> LevelVerbose
-        com.kapp.xloggui.data.model.LogLevel.Debug -> LevelDebug
-        com.kapp.xloggui.data.model.LogLevel.Info -> LevelInfo
-        com.kapp.xloggui.data.model.LogLevel.Warning -> LevelWarn
-        com.kapp.xloggui.data.model.LogLevel.Error -> LevelError
-        com.kapp.xloggui.data.model.LogLevel.Fatal -> LevelFatal
+        com.kapp.marslens.data.model.LogLevel.Verbose -> LevelVerbose
+        com.kapp.marslens.data.model.LogLevel.Debug -> LevelDebug
+        com.kapp.marslens.data.model.LogLevel.Info -> LevelInfo
+        com.kapp.marslens.data.model.LogLevel.Warning -> LevelWarn
+        com.kapp.marslens.data.model.LogLevel.Error -> LevelError
+        com.kapp.marslens.data.model.LogLevel.Fatal -> LevelFatal
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }
     
-    val bgColor = if (item.level >= com.kapp.xloggui.data.model.LogLevel.Warning) {
+    val bgColor = if (item.level >= com.kapp.marslens.data.model.LogLevel.Warning) {
         levelColor.copy(alpha = 0.05f)
     } else {
         Color.Transparent
@@ -420,7 +420,7 @@ fun LogItemRow(
                 Text(
                     item.message,
                     style = MaterialTheme.typography.bodySmall.copy(fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace),
-                    color = if (item.level >= com.kapp.xloggui.data.model.LogLevel.Error) levelColor else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                    color = if (item.level >= com.kapp.marslens.data.model.LogLevel.Error) levelColor else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                     modifier = Modifier.weight(1f),
                     maxLines = if (isExpanded) Int.MAX_VALUE else 1,
                     overflow = if (isExpanded) androidx.compose.ui.text.style.TextOverflow.Visible else androidx.compose.ui.text.style.TextOverflow.Ellipsis

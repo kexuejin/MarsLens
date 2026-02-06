@@ -1,4 +1,4 @@
-package com.kapp.xloggui.domain
+package com.kapp.marslens.domain
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

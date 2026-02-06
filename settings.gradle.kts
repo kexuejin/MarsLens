@@ -1,4 +1,4 @@
-rootProject.name = "xlog-gui"
+rootProject.name = "MarsLens"
 
 pluginManagement {
     repositories {

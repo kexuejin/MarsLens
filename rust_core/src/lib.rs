@@ -15,7 +15,7 @@ struct LogEntry {
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_kapp_xloggui_data_parser_XlogParser_decodeXlogNative<'local>(
+pub extern "system" fn Java_com_kapp_marslens_data_parser_XlogParser_decodeXlogNative<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     path_jstring: JString<'local>,
@@ -29,7 +29,7 @@ pub extern "system" fn Java_com_kapp_xloggui_data_parser_XlogParser_decodeXlogNa
     let array_list_class = env.find_class("java/util/ArrayList").expect("ArrayList not found");
     let list = env.new_object(&array_list_class, "()V", &[]).expect("Failed to create list");
     
-    let log_entry_class = env.find_class("com/kapp/xloggui/data/model/LogEntry").expect("LogEntry class not found");
+    let log_entry_class = env.find_class("com/kapp/marslens/data/model/LogEntry").expect("LogEntry class not found");
     
     for log in &logs {
         let _ = env.with_local_frame(16, |inner_env| {
@@ -40,7 +40,7 @@ pub extern "system" fn Java_com_kapp_xloggui_data_parser_XlogParser_decodeXlogNa
             let log_entry = inner_env.call_static_method(
                 &log_entry_class,
                 "createFromNative",
-                "(ILjava/lang/String;Ljava/lang/String;JJJ)Lcom/kapp/xloggui/data/model/LogEntry;",
+                "(ILjava/lang/String;Ljava/lang/String;JJJ)Lcom/kapp/marslens/data/model/LogEntry;",
                 &[
                     (log.level as i32).into(),
                     (&tag_jstring).into(),
@@ -77,7 +77,7 @@ fn decrypt_tea(data: &mut [u8], key: &[u8]) {
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_kapp_xloggui_data_parser_XlogParser_exportDecryptedFileNative<'local>(
+pub extern "system" fn Java_com_kapp_marslens_data_parser_XlogParser_exportDecryptedFileNative<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     path_jstring: JString<'local>,
@@ -103,7 +103,7 @@ pub extern "system" fn Java_com_kapp_xloggui_data_parser_XlogParser_exportDecryp
 }
 
 #[no_mangle]
-pub extern "system" fn Java_com_kapp_xloggui_data_parser_XlogParser_scanDirectoryNative<'local>(
+pub extern "system" fn Java_com_kapp_marslens_data_parser_XlogParser_scanDirectoryNative<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     path_jstring: JString<'local>,

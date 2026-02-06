@@ -1,11 +1,11 @@
-package com.kapp.xloggui
+package com.kapp.marslens
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.unit.dp
-import com.kapp.xloggui.di.initKoin
-import com.kapp.xloggui.di.platformModule
-import com.kapp.xloggui.ui.theme.AppTheme
+import com.kapp.marslens.di.initKoin
+import com.kapp.marslens.di.platformModule
+import com.kapp.marslens.ui.theme.AppTheme
 
 fun main() = application {
     initKoin { 
@@ -20,7 +20,7 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         state = windowState,
-        title = "Xlog GUI"
+        title = "MarsLens - XLog Viewer"
     ) {
         androidx.compose.ui.unit.DpSize(900.dp, 600.dp).let { minSize ->
              // Note: Compose Desktop doesn't have a direct minSize on Window yet without reaching into AWT

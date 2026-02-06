@@ -2,7 +2,7 @@
 
 ## Overview
 
-XLog GUI is designed with a layered architecture, separating the high-performance native core from the modern reactive UI.
+MarsLens is designed with a layered architecture, separating the high-performance native core from the modern reactive UI.
 
 ```mermaid
 graph TD

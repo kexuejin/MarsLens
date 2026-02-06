@@ -1,8 +1,8 @@
-package com.kapp.xloggui.data.parser
+package com.kapp.marslens.data.parser
 
-import com.kapp.xloggui.data.model.LogEntry
-import com.kapp.xloggui.data.model.LogLevel
-import com.kapp.xloggui.domain.XlogDecoder
+import com.kapp.marslens.data.model.LogEntry
+import com.kapp.marslens.data.model.LogLevel
+import com.kapp.marslens.domain.XlogDecoder
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime

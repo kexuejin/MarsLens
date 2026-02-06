@@ -1,6 +1,6 @@
-# Contributing to XLog GUI
+# Contributing to MarsLens
 
-Thank you for your interest in contributing to XLog GUI! We welcome contributions from everyone.
+Thank you for your interest in contributing to MarsLens! We welcome contributions from everyone.
 
 ## How to Contribute
 

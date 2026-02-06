@@ -1,4 +1,4 @@
-package com.kapp.xloggui.ui.theme
+package com.kapp.marslens.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme

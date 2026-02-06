@@ -1,6 +1,6 @@
-package com.kapp.xloggui.domain
+package com.kapp.marslens.domain
 
-import com.kapp.xloggui.data.model.LogEntry
+import com.kapp.marslens.data.model.LogEntry
 
 interface XlogDecoder {
     suspend fun decode(filePath: String, privateKey: String?): List<LogEntry>

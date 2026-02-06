@@ -1,4 +1,4 @@
-package com.kapp.xloggui.domain
+package com.kapp.marslens.domain
 
 interface FilePicker {
     suspend fun pickFile(): String?

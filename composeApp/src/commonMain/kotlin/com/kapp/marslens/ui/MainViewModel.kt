@@ -1,11 +1,11 @@
-package com.kapp.xloggui.ui
+package com.kapp.marslens.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kapp.xloggui.data.model.LogEntry
-import com.kapp.xloggui.data.model.LogLevel
-import com.kapp.xloggui.domain.FilePicker
-import com.kapp.xloggui.domain.XlogDecoder
+import com.kapp.marslens.data.model.LogEntry
+import com.kapp.marslens.data.model.LogLevel
+import com.kapp.marslens.domain.FilePicker
+import com.kapp.marslens.domain.XlogDecoder
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

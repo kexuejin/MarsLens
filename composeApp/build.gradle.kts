@@ -8,7 +8,7 @@ plugins {
 
 kotlin {
     androidLibrary {
-        namespace = "com.kapp.xloggui"
+        namespace = "com.kapp.marslens"
         compileSdk = 36
         minSdk = 26
         // androidResources.enable = true
@@ -86,11 +86,11 @@ configurations.all {
 
 compose.desktop {
     application {
-        mainClass = "com.kapp.xloggui.MainKt"
+        mainClass = "com.kapp.marslens.MainKt"
         // jvmArgs += listOf("-Djava.library.path=${project.projectDir}/libs")
         nativeDistributions {
             targetFormats(org.jetbrains.compose.desktop.application.dsl.TargetFormat.Dmg, org.jetbrains.compose.desktop.application.dsl.TargetFormat.Pkg)
-            packageName = "XlogGui"
+            packageName = "MarsLens"
             packageVersion = "1.0.0"
         }
     }
@@ -99,11 +99,11 @@ compose.desktop {
 sqldelight {
     databases {
         create("PunchDatabase") {
-            packageName.set("com.kapp.xloggui.data.db")
+            packageName.set("com.kapp.marslens.data.db")
         }
     }
 }
 
 compose.resources {
-    packageOfResClass = "com.kapp.xloggui"
+    packageOfResClass = "com.kapp.marslens"
 }

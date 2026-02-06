@@ -56,14 +56,14 @@ jobs:
       if: runner.os == 'macOS'
       uses: actions/upload-artifact@v4
       with:
-        name: XLogGui-macOS
+        name: MarsLens-macOS
         path: composeApp/build/compose/binaries/main/dmg/*.dmg
 
     - name: Upload Artifacts (Windows)
       if: runner.os == 'Windows'
       uses: actions/upload-artifact@v4
       with:
-        name: XLogGui-Windows
+        name: MarsLens-Windows
         path: composeApp/build/compose/binaries/main/msi/*.msi
 
   release:
@@ -78,6 +78,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          XLogGui-macOS/*.dmg
-          XLogGui-Windows/*.msi
+          MarsLens-macOS/*.dmg
+          MarsLens-Windows/*.msi
         generate_release_notes: true

@@ -1,8 +1,8 @@
-# XLog GUI
+# MarsLens
 
 [English](README.md) | [简体中文](README_CN.md)
 
-**XLog GUI** is a modern, high-performance desktop application for viewing and analyzing Tencent Mars XLog files. Built with **Kotlin Compose Multiplatform** and a **Rust** core, it provides a native experience on macOS and Windows with ultra-fast log parsing and decryption capabilities.
+**MarsLens** (formerly XLog GUI) is a modern, high-performance desktop application for viewing and analyzing Tencent Mars XLog files. Built with **Kotlin Compose Multiplatform** and a **Rust** core, it provides a native experience on macOS and Windows with ultra-fast log parsing and decryption capabilities.
 
 ## ✨ Features
 
@@ -32,14 +32,14 @@
 ### Installation
 
 **Download Releases**
-Check the [Releases](https://github.com/kexuejin/xlog-gui/releases) page for the latest `.dmg` (macOS) or `.msi` (Windows) installers.
+Check the [Releases](https://github.com/kexuejin/MarsLens/releases) page for the latest `.dmg` (macOS) or `.msi` (Windows) installers.
 
 **Build from Source**
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/kexuejin/xlog-gui.git
-    cd xlog-gui
+    git clone https://github.com/kexuejin/MarsLens.git
+    cd MarsLens
     ```
 
 2.  **Build the Rust Core**

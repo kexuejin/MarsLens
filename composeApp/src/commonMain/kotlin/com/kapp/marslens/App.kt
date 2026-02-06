@@ -1,8 +1,8 @@
-package com.kapp.xloggui
+package com.kapp.marslens
 
 import androidx.compose.runtime.Composable
-import com.kapp.xloggui.ui.theme.AppTheme
-import com.kapp.xloggui.ui.LogViewerScreen
+import com.kapp.marslens.ui.theme.AppTheme
+import com.kapp.marslens.ui.LogViewerScreen
 import org.koin.compose.KoinContext
 
 @Composable

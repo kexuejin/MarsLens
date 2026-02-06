@@ -1,8 +1,8 @@
-# XLog GUI
+# MarsLens
 
 [English](README.md) | [简体中文](README_CN.md)
 
-**XLog GUI** 是一个现代化、高性能的桌面应用程序，专为查看和分析腾讯 Mars XLog 文件而设计。项目采用 **Kotlin Compose Multiplatform** 构建 UI，底层集成 **Rust** 核心库，在 macOS 和 Windows 上提供原生级的体验，具备极速的日志解析和解密能力。
+**MarsLens** (原 XLog GUI) 是一个现代化、高性能的桌面应用程序，专为查看和分析腾讯 Mars XLog 文件而设计。项目采用 **Kotlin Compose Multiplatform** 构建 UI，底层集成 **Rust** 核心库，在 macOS 和 Windows 上提供原生级的体验，具备极速的日志解析和解密能力。
 
 ## ✨ 功能特性
 
@@ -32,14 +32,14 @@
 ### 安装说明
 
 **下载安装包**
-请访问 [Releases](https://github.com/kexuejin/xlog-gui/releases) 页面下载最新的 `.dmg` (macOS) 或 `.msi` (Windows) 安装包。
+请访问 [Releases](https://github.com/kexuejin/MarsLens/releases) 页面下载最新的 `.dmg` (macOS) 或 `.msi` (Windows) 安装包。
 
 **源码编译**
 
 1.  **克隆仓库**
     ```bash
-    git clone https://github.com/kexuejin/xlog-gui.git
-    cd xlog-gui
+    git clone https://github.com/kexuejin/MarsLens.git
+    cd MarsLens
     ```
 
 2.  **编译 Rust 核心库**

@@ -1,4 +1,4 @@
-package com.kapp.xloggui.ui
+package com.kapp.marslens.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.koin.compose.viewmodel.koinViewModel
-import com.kapp.xloggui.ui.MainViewModel
+import com.kapp.marslens.ui.MainViewModel
 
 @Composable
 fun FileTreeSidebar(

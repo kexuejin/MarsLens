@@ -1,4 +1,4 @@
-package com.kapp.xloggui.data.model
+package com.kapp.marslens.data.model
 
 import kotlin.time.ExperimentalTime
 import kotlinx.datetime.Instant
