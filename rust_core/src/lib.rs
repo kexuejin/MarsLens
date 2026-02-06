@@ -4,6 +4,7 @@ use jni::sys::{jobject, jboolean};
 use std::io::{Read, Write};
 use byteorder::{LittleEndian, ReadBytesExt};
 use walkdir::WalkDir;
+use chrono::{Local, TimeZone};
 
 struct LogEntry {
     level: i32,
@@ -113,9 +114,25 @@ pub extern "system" fn Java_com_kapp_marslens_data_parser_XlogParser_exportDecry
     use std::io::Write;
     let Ok(mut file) = std::fs::File::create(output) else { return 0; };
     for entry in entries {
+        // Format time
+        // Use Local time for readability
+        let dt = Local.timestamp_millis_opt(entry.time_ms).unwrap();
+        let time_str = dt.format("%Y-%m-%d %H:%M:%S%.3f").to_string();
+        
+        // Format level
+        let level_str = match entry.level {
+            0 => "Verbose",
+            1 => "Debug",
+            2 => "Info",
+            3 => "Warning",
+            4 => "Error",
+            5 => "Fatal",
+            _ => "Unknown",
+        };
+
         // Format as a standard log line
-        let line = format!("[{}] [{}] [{}/{}] [{}] : {}\n", 
-            entry.time_ms, entry.level, entry.pid, entry.tid, entry.tag, entry.message);
+        let line = format!("{} {} {}/{} {}: {}\n", 
+            time_str, level_str, entry.pid, entry.tid, entry.tag, entry.message);
         if file.write_all(line.as_bytes()).is_err() { return 0; }
     }
     1
@@ -420,7 +437,7 @@ mod tests {
     #[test]
     fn test_parse_punch_mmap3() {
         let path = "/Users/kexuejin/source/xlog-gui/build/reports/Punch.mmap3";
-        let entries = parse_xlog(path);
+        let entries = parse_xlog(path, None);
         println!("Test: Found {} entries", entries.len());
         for (i, entry) in entries.iter().enumerate().take(5) {
             println!("Entry {}: Level={}, Time={}, PID={}, TID={}, Tag={}, Msg={}", 
