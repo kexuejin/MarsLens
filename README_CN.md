@@ -4,6 +4,8 @@
 
 **MarsLens** (原 XLog GUI) 是一个现代化、高性能的桌面应用程序，专为查看和分析腾讯 Mars XLog 文件而设计。项目采用 **Kotlin Compose Multiplatform** 构建 UI，底层集成 **Rust** 核心库，在 macOS 和 Windows 上提供原生级的体验，具备极速的日志解析和解密能力。
 
+![MarsLens 截图](docs/images/preview.png)
+
 ## ✨ 功能特性
 
 *   **高性能解析**: 内置 Rust 核心引擎，解析和解密 `.xlog` 文件速度极快。
