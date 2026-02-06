@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -500,7 +501,7 @@ fun StatusBar(total: Int, filtered: Int, isLoading: Boolean, error: String?) {
             modifier = Modifier.fillMaxWidth().height(28.dp).padding(horizontal = 12.dp),
             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
         ) {
-            Icon(Icons.Default.List, contentDescription = null, modifier = Modifier.size(12.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
+            Icon(Icons.AutoMirrored.Filled.List, contentDescription = null, modifier = Modifier.size(12.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 "Total: $total",

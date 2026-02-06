@@ -3,7 +3,7 @@ package com.kapp.marslens.data.parser
 import com.kapp.marslens.data.model.LogEntry
 import com.kapp.marslens.data.model.LogLevel
 import com.kapp.marslens.domain.XlogDecoder
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 

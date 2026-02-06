@@ -165,6 +165,8 @@ fun KeyItem(
     }
 }
 
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+
 @Composable
 fun FileTreeNodeItem(
     node: FileNode,
@@ -187,7 +189,7 @@ fun FileTreeNodeItem(
         // Expand/Collapse Icon or Spacer
         if (node.isDirectory) {
             Icon(
-                if (node.isExpanded) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowRight,
+                if (node.isExpanded) Icons.Default.KeyboardArrowDown else Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 modifier = Modifier.size(16.dp).clickable { onToggle() },
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
